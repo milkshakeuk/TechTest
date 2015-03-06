@@ -1,0 +1,22 @@
+﻿<h2>People</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Palindrome</th>
+            <th>Authorised</th>
+            <th>Enabled</th>
+            <th>Colours</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="person in people">
+            <td><a href="#/people/{{person.personId}}">{{person.getFullName()}}</a></td>
+            <td><span ng-class="{'text-success':person.nameIsPalindrome(), 'text-danger': !person.nameIsPalindrome()}">{{person.nameIsPalindrome() ? 'yes':'no'}}</span></td>
+            <td><span ng-class="{'text-success':person.isAuthorised, 'text-danger': !person.isAuthorised}">{{person.isAuthorised ? 'yes':'no'}}</span></td>
+            <td><span ng-class="{'text-success':person.isEnabled, 'text-danger': !person.isEnabled}">{{person.isEnabled ? 'yes':'no'}}</span></td>
+            <td><span ng-repeat="colour in person.colours">{{colour.name}}{{$last ? '' : ', '}}</span></td>
+        </tr>
+    </tbody>
+</table>

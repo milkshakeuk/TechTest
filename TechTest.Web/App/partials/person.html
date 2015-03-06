@@ -1,0 +1,31 @@
+﻿<h2>Update {{person.getFullName()}}</h2>
+
+<form class="form-horizontal">
+    <fieldset>
+        <legend>User Details</legend>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" ng-click="hideCheckBox('Authorised')" for="Authorised">Authorised</label>
+            <div class="col-sm-1 checkbox">
+                <input type="checkbox" ng-model="person.isAuthorised" id="Authorised"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" ng-click="hideCheckBox('Enabled')" for="Enabled">Enabled</label>
+            <div class="col-sm-1 checkbox">
+                <input type="checkbox" ng-model="person.isEnabled" id="Enabled"/>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Favourate Colours</legend>
+        <div class="form-group" ng-repeat="colour in colours">
+            <label class="col-sm-2 control-label" ng-click="hideCheckBox(colour.name+colour.colourId)" for="{{colour.name+colour.colourId}}">{{colour.name}}</label>
+            <div class="col-sm-1 checkbox">
+                <input type="checkbox" ng-click="person.addColour(colour)" ng-checked="person.hasColour(colour).result" id="{{colour.name+colour.colourId}}" />
+            </div>
+        </div>
+    </fieldset>
+    <div class="control-group">
+        <input class="btn btn-primary" type="submit" ng-click="update()" value="Save Changes" /> <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+    </div>
+</form>
